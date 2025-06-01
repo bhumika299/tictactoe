@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  transition: background 0.5s;
+  color: #333;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #232526, #6f9bc7);
+  color: #f4c135;
+}
+
+.main-title {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 3rem;
+  font-weight: bold;
+}
+/* Keep container as row flex to put game-area and elephant side by side */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;  /* space between game area and elephant */
+  margin-top: 20px;
+}
+
+/* Scoreboard centered above container */
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  width: 100%;
+}
+
+.game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  position: relative;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.cell:hover {
+  background-color: #f0f0f0;
+}
+
+.cell.winner {
+  background-color: #ffe066;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.status {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+#reset {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+#reset:hover {
+  background-color: #45a049;
+}
+
+#theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#elephant {
+  height: 100px;
+}
+
+
+.win-line {
+  position: absolute;
+  height: 5px;
+  width: 310px;
+  background-color: red;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s ease;
+  top: 50px;
+  left: -5px;
+  z-index: 2;
+}
+.victory-message {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  user-select: none;
+}
+
+.victory-message button {
+  margin-top: 20px;
+  padding: 10px 30px;
+  font-size: 1.5rem;
+  background-color: #ff9800;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
